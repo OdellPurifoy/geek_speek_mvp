@@ -58,5 +58,6 @@ end
 gem 'bootstrap', '~> 4.5', '>= 4.5.3'
 gem 'devise', '~> 4.7', '>= 4.7.3'
 gem 'faker', '~> 2.15', '>= 2.15.1'
+gem 'font_awesome5_rails', '~> 1.3'
 gem 'jquery-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
