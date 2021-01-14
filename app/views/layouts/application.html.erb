@@ -10,9 +10,10 @@
   </head>
 
   <body>
+    <%= render 'shared/navbar' %>
+    <%= render 'shared/jumbotron' %>
+
     <div class="div container">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
       <%= yield %>
     </div>
   </body>
