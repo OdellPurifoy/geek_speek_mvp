@@ -9,12 +9,17 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <%= link_to edit_user_registration_path, class: 'nav-link' do %>
-            <span class="icon is-small has-text-link"><i class="fa fa-user-alt"></i> Profile</span>
+            <span class="icon is-small has-text-link"><i class="fa fa-user-alt fa-sm"></i> Profile</span>
           <% end %>
         </li>
         <li class="nav-item">
           <%= link_to destroy_user_session_path, method: :delete, class:"nav-link" do %>
             <span class="icon is-small has-text-link"><i class="fa fa-sign-out-alt"></i> Sign Out</span>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_speek_path, class:"nav-link" do %>
+            <span class="icon is-small has-text-link"><i class="fa fa-edit"></i> Speek</span>
           <% end %>
         </li>
       </ul>

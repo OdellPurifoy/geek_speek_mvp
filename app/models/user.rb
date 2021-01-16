@@ -6,6 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :speeks, dependent: :destroy
   validates :email, :username, uniqueness: true
   validates :bio, length: { maximum: 500 }, allow_blank: true
 end
