@@ -18,6 +18,11 @@
     <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
   </div>
 
+  <div class="form-group">
+    <%= f.label :profession %><br />
+    <%= f.select :profession, User::PROFESSIONS %>
+  </div>
+
   <div class="field">
     <%= f.label :bio %><br />
     <%= f.text_area :bio, size: "70x5", autofocus: true, autocomplete: "bio" %>
