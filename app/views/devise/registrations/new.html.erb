@@ -38,6 +38,26 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :facebook_handle %><br />
+        <%= f.text_field :facebook_handle, autofocus: true, autocomplete: "facebook_handle" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :twitter_handle %><br />
+        <%= f.text_field :twitter_handle, autofocus: true, autocomplete: "twitter_handle" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :instagram_handle %><br />
+        <%= f.text_field :instagram_handle,  autofocus: true, autocomplete: "instagram_handle" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :linked_in %><br />
+        <%= f.text_field :linked_in, autofocus: true, autocomplete: "linked_in" %>
+      </div>
+
+      <div class="form-group">
         <%= f.label :password %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
