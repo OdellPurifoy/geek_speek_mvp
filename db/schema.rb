@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_18_223214) do
+ActiveRecord::Schema.define(version: 2021_01_18_225606) do
 
   create_table "speeks", force: :cascade do |t|
     t.text "content", default: "", null: false
@@ -35,6 +35,10 @@ ActiveRecord::Schema.define(version: 2021_01_18_223214) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "admin", default: false
     t.string "profession"
+    t.string "facebook_handle"
+    t.string "twitter_handle"
+    t.string "instagram_handle"
+    t.string "linked_in"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
