@@ -5,7 +5,7 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navb">
-    <% if user_signed_in? %>
+    <% if user_signed_in? && current_user.admin == true %>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <%= link_to edit_user_registration_path, class: 'nav-link' do %>
@@ -20,6 +20,19 @@
         <li class="nav-item">
           <%= link_to new_speek_path, class:"nav-link" do %>
             <span class="icon is-small has-text-link"><i class="fa fa-edit"></i> Speek</span>
+          <% end %>
+        </li>
+      </ul>
+    <% elsif user_signed_in? %>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <%= link_to edit_user_registration_path, class: 'nav-link' do %>
+            <span class="icon is-small has-text-link"><i class="fa fa-user-alt fa-sm"></i> Profile</span>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to destroy_user_session_path, method: :delete, class:"nav-link" do %>
+            <span class="icon is-small has-text-link"><i class="fa fa-sign-out-alt"></i> Sign Out</span>
           <% end %>
         </li>
       </ul>

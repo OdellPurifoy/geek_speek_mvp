@@ -72,6 +72,6 @@ class SpeeksController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def speek_params
-    params.require(:speek).permit(:content, :user_id)
+    params.require(:speek).permit(:content, :user_id, :category)
   end
 end
