@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :speeks, dependent: :destroy
+  has_one_attached :avatar
   validates :email, :username, uniqueness: true
   validates :bio, length: { maximum: 500 }, allow_blank: true
 

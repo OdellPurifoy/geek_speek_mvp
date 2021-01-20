@@ -15,3 +15,18 @@
  */
 @import "bootstrap";
 @import 'font_awesome5_webfont';
+
+#user_last_name,
+#user_first_name,
+#user_username,
+#user_email,
+#user_profession,
+#user_instagram_handle,
+#user_twitter_handle,
+#user_facebook_handle,
+#user_linked_in,
+#user_password,
+#user_password_confirmation
+ {
+  width: 300px;
+}
