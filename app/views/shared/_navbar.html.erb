@@ -9,7 +9,7 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <%= link_to edit_user_registration_path, class: 'nav-link' do %>
-            <span class="icon is-small has-text-link"><i class="fa fa-user-alt fa-sm"></i> Profile</span>
+            <%= image_tag user_avatar(current_user, 20), class: "rounded-circle" %>
           <% end %>
         </li>
         <li class="nav-item">
@@ -27,7 +27,7 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <%= link_to edit_user_registration_path, class: 'nav-link' do %>
-            <span class="icon is-small has-text-link"><i class="fa fa-user-alt fa-sm"></i> Profile</span>
+            <%= image_tag user_avatar(current_user, 20), class: "rounded-circle" %>
           <% end %>
         </li>
         <li class="nav-item">
