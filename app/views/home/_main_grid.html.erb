@@ -3,11 +3,30 @@
     <div class="col-8">
       <div class="card mb-3">
         <div class="card-header">
-          <%= speek.user.username %> </br>
-          <small>Spoke on: <%= speek.created_at.strftime('%b %d, %Y') %></small>
+          <% if current_user %>
+            <%= image_tag user_avatar(current_user, 20), class: "rounded-circle" %> <%= speek.user.username %> </br>
+            <small>Spoke on: <%= speek.created_at.strftime('%b %d, %Y') %></small>
+          <% else %>
+            <%= image_tag user_avatar(speek.user, 20), class: "rounded-circle" %> <%= speek.user.username %> </br>
+            <small>Spoke on: <%= speek.created_at.strftime('%b %d, %Y') %></small>
+          <% end %>
         </div>
         <div class="card-body">
           <p class="card-text"><%= speek.content %></p>
+        </div>
+        <div class="card-footer">
+          <ul class="nav nav-pills card-header-pills">
+            <li class="nav-item">
+              <%= link_to "Like", class: "nav-link" do %>
+                <i class="fas fa-check"></i>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Favorite", class: "nav-link" do %>
+                <i class="fas fa-heart"></i>
+              <% end %>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
