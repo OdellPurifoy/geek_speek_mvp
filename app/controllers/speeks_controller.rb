@@ -30,7 +30,7 @@ class SpeeksController < ApplicationController
 
     respond_to do |format|
       if @speek.save
-        format.html { redirect_to @speek, notice: 'Speek was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Speek was successfully created.' }
         format.json { render :show, status: :created, location: @speek }
       else
         format.html { render :new }
