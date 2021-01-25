@@ -10,4 +10,4 @@
 
 <h3>Comments</h3>
 <%= render partial: 'comments/form', locals: { commentable: @speek } %>
-<%= render @speek.comments %>
+<%= render @speek.comments.where(parent_id: nil) %>
