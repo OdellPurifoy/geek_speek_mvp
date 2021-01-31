@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_22_023029) do
+ActiveRecord::Schema.define(version: 2021_01_31_234203) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -44,11 +44,11 @@ ActiveRecord::Schema.define(version: 2021_01_22_023029) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.string "commentable_type", null: false
     t.integer "commentable_id", null: false
     t.integer "parent_id"
-    t.text "comment_content", null: false
+    t.text "comment_content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
