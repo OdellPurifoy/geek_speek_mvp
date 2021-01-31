@@ -2,8 +2,13 @@
 <% max_nesting = local_assigns[:max_nesting] %>
 
 <div class="border-left p-4 mb-4">
-  <%= comment.user.username %> posted
-  <%= simple_format comment.comment_content %>
+  <% if comment.deleted? %>
+    <strong>[deleted]</strong> posted
+    <p>[deleted]</p>
+  <% else %>
+    <strong><%= comment.user.username %></strong> posted
+    <%= simple_format comment.comment_content %>
+  <% end %>
 
   <div data-controller="reply">
     <small>
@@ -12,7 +17,7 @@
     </small>
     <%= render partial: 'comments/form', locals: {
         commentable: comment.commentable,
-        parent_id: reply_to_id(comment, nesting, max_nesting),
+        parent_id: reply_to_comment_id(comment, nesting, max_nesting),
         class: 'd-none',
         target: "reply.form"
       } %>
