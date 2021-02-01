@@ -12,8 +12,18 @@
 
   <div data-controller="reply">
     <small>
-      <%= link_to "Reply", "#", data: { action: 'click->reply#toggle' } %>
-      <%= link_to "Delete", [comment.commentable, comment], method: :delete, data: {confirm: "Are you sure?"} if comment.user == current_user %>
+      <% if comment.user == current_user || current_user.admin == true %>
+        <%= link_to "#", data: { action: 'click->reply#toggle' } do %>
+          <i class="fas fa-reply"></i>
+        <% end %>
+        <%= link_to [comment.commentable, comment], method: :delete, data: {confirm: "Are you sure?"}, class: 'pl-2' do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      <% else %>
+        <%= link_to "#", data: { action: 'click->reply#toggle' } do %>
+          <i class="fas fa-reply"></i>
+        <% end %>
+      <% end %>
     </small>
     <%= render partial: 'comments/form', locals: {
         commentable: comment.commentable,
