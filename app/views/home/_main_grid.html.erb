@@ -15,18 +15,52 @@
           <p class="card-text"><%= speek.content %></p>
         </div>
         <div class="card-footer">
-          <ul class="nav nav-pills card-header-pills">
-            <li class="nav-item">
-              <%= link_to "Like", class: "nav-link" do %>
-                <i class="fas fa-check"></i>
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Favorite", class: "nav-link" do %>
-                <i class="fas fa-heart"></i>
-              <% end %>
-            </li>
-          </ul>
+          <% if speek.comments.any? && user_signed_in? %>
+            <ul class="nav nav-pills card-header-pills">
+              <li class="nav-item">
+                <% if speek.liked?(current_user) %>
+                  <%= link_to like_path(speek), method: "put", class: "nav-link", disabled: true do %>
+                    <i class="fas fa-thumbs-up"></i>
+                  <% end %>
+                <% else %>
+                  <%= button_to like_path(speek), method: "put", class: "nav-link" do %>
+                    <i class="fas fa-thumbs-up"></i>
+                  <% end %>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Favorite", class: "nav-link" do %>
+                  <i class="fas fa-heart"></i>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to speek_path(speek), class: "nav-link" do %>
+                  <i class="fas fa-eye"></i>
+                <% end %>
+              </li>
+            </ul>
+          <% elsif user_signed_in?  %>
+            <ul class="nav nav-pills card-header-pills">
+              <li class="nav-item">
+                <%= link_to "Like", class: "nav-link" do %>
+                  <i class="fas fa-thumbs-up"></i>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Favorite", class: "nav-link" do %>
+                  <i class="fas fa-heart"></i>
+                <% end %>
+              </li>
+            </ul>
+          <% elsif speek.comments.any?  %>
+            <ul class="nav nav-pills card-header-pills">
+              <li class="nav-item">
+                <%= link_to speek_path(speek), class: "nav-link" do %>
+                  <i class="fas fa-eye"></i>
+                <% end %>
+              </li>
+            </ul>
+          <% end %>
         </div>
       </div>
     </div>

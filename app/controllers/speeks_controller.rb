@@ -63,6 +63,12 @@ class SpeeksController < ApplicationController
     end
   end
 
+  def like
+    @speek = Speek.find(params[:id])
+    Like.create(user_id: current_user.id, speek_id: @speek.id)
+    redirect_to speek_path(@speek)
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  put '/speek/:id/like', to: 'speeks#like', as: 'like'
+  root to: 'home#index'
+
   resources :speeks do
     resources :comments, module: :speeks
   end
   devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: 'home#index'
 end
