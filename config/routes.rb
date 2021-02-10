@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   put '/speek/:id/favorite', to: 'speeks#favorite', as: 'favorite'
   root to: 'home#index'
 
+  resources :favorites, only: :index
   resources :speeks do
     resources :comments, module: :speeks
   end
