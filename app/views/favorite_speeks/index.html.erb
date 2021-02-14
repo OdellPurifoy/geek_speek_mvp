@@ -1,0 +1,6 @@
+<h3>Your Favorites</h3>
+
+<% @favorites.each do |favorite| %>
+<%= favorite.content %>
+<%= link_to 'Remove from favorites', favorite_speek_path(favorite), method: :delete %>
+<% end %>

@@ -29,7 +29,7 @@
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to favorite_path(speek), method: "put", class: "nav-link" do %>
+                <%= link_to favorite_speeks_path(speek_id: speek.id), method: :post, class: "nav-link" do %>
                   <i class="fas fa-heart"></i>
                 <% end %>
               </li>
@@ -47,7 +47,7 @@
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to favorite_path(speek), method: "put", class: "nav-link" do %>
+                <%= link_to favorite_speeks_path(speek_id: speek.id), method: :post, class: "nav-link" do %>
                   <i class="fas fa-heart"></i>
                 <% end %>
               </li>
