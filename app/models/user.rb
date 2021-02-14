@@ -8,8 +8,11 @@ class User < ApplicationRecord
 
   has_many :speeks, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :favorites, dependent: :destroy
+  has_many :favorites
+  has_many :favorited_speeks, through: :favorites, source: :favorited, source_type: 'Speek'
+
   has_one_attached :avatar
+
   validates :email, :username, uniqueness: true
   validates :bio, length: { maximum: 500 }, allow_blank: true
 

@@ -2,10 +2,10 @@
 
 Rails.application.routes.draw do
   put '/speek/:id/like', to: 'speeks#like', as: 'like'
-  put '/speek/:id/favorite', to: 'speeks#favorite', as: 'favorite'
   root to: 'home#index'
 
-  resources :favorites, only: :index
+  resources :favorite_speeks, only: %i[index create destroy]
+
   resources :speeks do
     resources :comments, module: :speeks
   end
