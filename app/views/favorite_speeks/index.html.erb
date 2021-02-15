@@ -1,6 +1,87 @@
-<h3>Your Favorites</h3>
+<h3 class="pb-3">Your Favorites</h3>
 
-<% @favorites.each do |favorite| %>
-<%= favorite.content %>
-<%= link_to 'Remove from favorites', favorite_speek_path(favorite), method: :delete %>
-<% end %>
+<div class="row">
+  <% @favorites.each do |favorite| %>
+    <div class="col-8">
+      <div class="card mb-3">
+        <div class="card-header">
+          <% if current_user %>
+            <%= image_tag user_avatar(current_user, 20), class: "rounded-circle" %> <%= favorite.user.username %> </br>
+            <small>Spoke on: <%= favorite.created_at.strftime('%b %d, %Y') %></small>
+          <% else %>
+            <%= image_tag user_avatar(speek.user, 20), class: "rounded-circle" %> <%= favorite.user.username %> </br>
+            <small>Spoke on: <%= favorite.created_at.strftime('%b %d, %Y') %></small>
+          <% end %>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><%= favorite.content %></p>
+        </div>
+        <div class="card-footer">
+          <% if favorite.comments.any? && user_signed_in? %>
+            <ul class="nav nav-pills card-header-pills">
+              <li class="nav-item">
+                <% if favorite.liked?(current_user) %>
+                  <%= link_to like_path(speek), method: "put", class: "nav-link", disabled: true do %>
+                    <i class="fas fa-thumbs-up"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to like_path(favorite), method: "put", class: "nav-link" do %>
+                    <i class="fas fa-thumbs-up"></i>
+                  <% end %>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to favorite_speek_path(favorite), method: :delete, class: "nav-link" do %>
+                  <i class="fas fa-minus-circle"></i>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to speek_path(speek), class: "nav-link" do %>
+                  <i class="fas fa-eye"></i>
+                <% end %>
+              </li>
+            </ul>
+          <% elsif user_signed_in?  %>
+            <ul class="nav nav-pills card-header-pills">
+              <li class="nav-item">
+                <% if favorite.liked?(current_user) %>
+                  <%= link_to like_path(speek), method: "put", class: "nav-link", disabled: true do %>
+                    <i class="fas fa-thumbs-up"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to like_path(favorite), method: "put", class: "nav-link" do %>
+                    <i class="fas fa-thumbs-up"></i>
+                  <% end %>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to favorite_speek_path(favorite), method: :delete, class: "nav-link" do %>
+                  <i class="fas fa-minus-circle"></i>
+                <% end %>
+              </li>
+            </ul>
+          <% elsif speek.comments.any?  %>
+            <ul class="nav nav-pills card-header-pills">
+              <li class="nav-item">
+                <% if favorite.liked?(current_user) %>
+                  <%= link_to like_path(speek), method: "put", class: "nav-link", disabled: true do %>
+                    <i class="fas fa-thumbs-up"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to like_path(favorite), method: "put", class: "nav-link" do %>
+                    <i class="fas fa-thumbs-up"></i>
+                  <% end %>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to speek_path(speek), class: "nav-link" do %>
+                  <i class="fas fa-eye"></i>
+                <% end %>
+              </li>
+            </ul>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
