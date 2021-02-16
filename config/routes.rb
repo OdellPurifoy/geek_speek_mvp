@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get '/search', to: 'speeks#search', as: 'search_page'
   put '/speek/:id/like', to: 'speeks#like', as: 'like'
   root to: 'home#index'
 

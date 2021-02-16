@@ -6,7 +6,7 @@ class Speek < ApplicationRecord
   has_many :likes
   has_many :favorites
   has_rich_text :content
-  validates :category, presence: true
+  validates :category, :title, presence: true
 
   CATEGORIES = ['Front End', 'Back End', 'Artificial Intelligence', 'Cyber Security', 'Dev Ops',
                 'Full Stack'].freeze
