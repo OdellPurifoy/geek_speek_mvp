@@ -69,6 +69,15 @@ class SpeeksController < ApplicationController
     redirect_to speek_path(@speek)
   end
 
+  def search
+    if params[:search].blank?
+      redirect_to(root_path, alert: 'Empty search field!') && return
+    else
+      @parameters = params[:search].downcase
+      @results = Speek.where('lower(title) LIKE :search', search: "%#{@parameters}%")
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

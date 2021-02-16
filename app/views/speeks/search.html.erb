@@ -1,41 +1,43 @@
+<h3 class="pb-3">Search Results</h3>
+
 <div class="row">
-  <% @speeks.each do |speek| %>
+  <% @results.each do |result| %>
     <div class="col-8">
       <div class="card mb-3">
         <div class="card-header">
           <% if current_user %>
-            <%= image_tag user_avatar(current_user, 20), class: "rounded-circle" %> <%= speek.user.username %> </br>
-            <small>Spoke on: <%= speek.created_at.strftime('%b %d, %Y') %></small>
+            <%= image_tag user_avatar(current_user, 20), class: "rounded-circle" %> <%= result.user.username %> </br>
+            <small>Spoke on: <%= result.created_at.strftime('%b %d, %Y') %></small>
           <% else %>
-            <%= image_tag user_avatar(speek.user, 20), class: "rounded-circle" %> <%= speek.user.username %> </br>
-            <small>Spoke on: <%= speek.created_at.strftime('%b %d, %Y') %></small>
+            <%= image_tag user_avatar(speek.user, 20), class: "rounded-circle" %> <%= result.user.username %> </br>
+            <small>Spoke on: <%= result.created_at.strftime('%b %d, %Y') %></small>
           <% end %>
         </div>
         <div class="card-body">
-          <h5><%= speek.title %></h5> </br>
-          <p class="card-text"><%= speek.content %></p>
+          <h5><%= result.title %></h5> </br>
+          <p class="card-text"><%= result.content %></p>
         </div>
         <div class="card-footer">
-          <% if speek.comments.any? && user_signed_in? %>
+          <% if result.comments.any? && user_signed_in? %>
             <ul class="nav nav-pills card-header-pills">
               <li class="nav-item">
-                <% if speek.liked?(current_user) %>
-                  <%= link_to like_path(speek), method: "put", class: "nav-link", disabled: true do %>
+                <% if result.liked?(current_user) %>
+                  <%= link_to like_path(result), method: "put", class: "nav-link", disabled: true do %>
                     <i class="fas fa-thumbs-up"></i>
                   <% end %>
                 <% else %>
-                  <%= button_to like_path(speek), method: "put", class: "nav-link" do %>
+                  <%= button_to like_path(result), method: "put", class: "nav-link" do %>
                     <i class="fas fa-thumbs-up"></i>
                   <% end %>
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to favorite_speeks_path(speek_id: speek.id), method: :post, class: "nav-link" do %>
+                <%= link_to favorite_speeks_path(speek_id: result.id), method: :post, class: "nav-link" do %>
                   <i class="fas fa-heart"></i>
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to speek_path(speek), class: "nav-link" do %>
+                <%= link_to speek_path(result), class: "nav-link" do %>
                   <i class="fas fa-eye"></i>
                 <% end %>
               </li>
@@ -48,15 +50,15 @@
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to favorite_speeks_path(speek_id: speek.id), method: :post, class: "nav-link" do %>
+                <%= link_to favorite_speeks_path(speek_id: result.id), method: :post, class: "nav-link" do %>
                   <i class="fas fa-heart"></i>
                 <% end %>
               </li>
             </ul>
-          <% elsif speek.comments.any?  %>
+          <% elsif result.comments.any?  %>
             <ul class="nav nav-pills card-header-pills">
               <li class="nav-item">
-                <%= link_to speek_path(speek), class: "nav-link" do %>
+                <%= link_to speek_path(result), class: "nav-link" do %>
                   <i class="fas fa-eye"></i>
                 <% end %>
               </li>
